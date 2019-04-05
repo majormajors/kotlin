@@ -37,6 +37,7 @@ import org.jetbrains.kotlin.config.*
 import org.jetbrains.kotlin.idea.caches.project.productionSourceInfo
 import org.jetbrains.kotlin.idea.caches.project.testSourceInfo
 import org.jetbrains.kotlin.idea.caches.resolve.analyzeAndGetResult
+import org.jetbrains.kotlin.idea.core.util.toPsiFile
 import org.jetbrains.kotlin.idea.facet.KotlinFacet
 import org.jetbrains.kotlin.idea.formatter.KotlinObsoleteCodeStyle
 import org.jetbrains.kotlin.idea.formatter.KotlinStyleGuideCodeStyle
@@ -45,13 +46,11 @@ import org.jetbrains.kotlin.idea.framework.CommonLibraryKind
 import org.jetbrains.kotlin.idea.framework.JSLibraryKind
 import org.jetbrains.kotlin.idea.framework.KotlinSdkType
 import org.jetbrains.kotlin.idea.project.languageVersionSettings
-import org.jetbrains.kotlin.idea.refactoring.toPsiFile
 import org.jetbrains.kotlin.js.resolve.JsPlatform
 import org.jetbrains.kotlin.platform.impl.*
 import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.resolve.TargetPlatform
 import org.jetbrains.kotlin.resolve.jvm.platform.JvmPlatform
-import org.jetbrains.kotlin.test.JUnit3RunnerWithInners
 import org.jetbrains.kotlin.test.JUnit3WithIdeaConfigurationRunner
 import org.junit.Assert
 import org.junit.runner.RunWith

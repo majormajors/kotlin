@@ -41,7 +41,6 @@ import org.jetbrains.kotlin.config.*
 import org.jetbrains.kotlin.extensions.ProjectExtensionDescriptor
 import org.jetbrains.kotlin.gradle.ArgsInfo
 import org.jetbrains.kotlin.gradle.CompilerArgumentsBySourceSet
-import org.jetbrains.kotlin.ide.konan.NativeLibraryKind
 import org.jetbrains.kotlin.idea.compiler.configuration.KotlinCommonCompilerArgumentsHolder
 import org.jetbrains.kotlin.idea.configuration.GradlePropertiesFileFacade.Companion.KOTLIN_CODE_STYLE_GRADLE_SETTING
 import org.jetbrains.kotlin.idea.facet.*
@@ -52,6 +51,7 @@ import org.jetbrains.kotlin.idea.framework.detectLibraryKind
 import org.jetbrains.kotlin.idea.inspections.gradle.findAll
 import org.jetbrains.kotlin.idea.inspections.gradle.findKotlinPluginVersion
 import org.jetbrains.kotlin.idea.inspections.gradle.getResolvedVersionByModuleData
+import org.jetbrains.kotlin.idea.modules.NativeLibraryKind
 import org.jetbrains.kotlin.idea.platform.tooling
 import org.jetbrains.kotlin.idea.roots.migrateNonJvmSourceFolders
 import org.jetbrains.kotlin.konan.library.KLIB_FILE_EXTENSION

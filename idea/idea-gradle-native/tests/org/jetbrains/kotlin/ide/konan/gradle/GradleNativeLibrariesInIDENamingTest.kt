@@ -11,10 +11,10 @@ import com.intellij.openapi.roots.ModuleRootManager
 import com.intellij.openapi.roots.OrderRootType
 import com.intellij.openapi.roots.libraries.Library
 import com.intellij.openapi.vfs.VfsUtilCore.urlToPath
-import org.jetbrains.kotlin.ide.konan.NativeLibraryKind
 import org.jetbrains.kotlin.idea.codeInsight.gradle.GradleImportingTestCase
 import org.jetbrains.kotlin.idea.configuration.externalCompilerVersion
 import org.jetbrains.kotlin.idea.framework.detectLibraryKind
+import org.jetbrains.kotlin.idea.modules.NativeLibraryKind
 import org.jetbrains.kotlin.idea.project.platform
 import org.jetbrains.kotlin.idea.util.projectStructure.allModules
 import org.jetbrains.kotlin.konan.library.konanCommonLibraryPath

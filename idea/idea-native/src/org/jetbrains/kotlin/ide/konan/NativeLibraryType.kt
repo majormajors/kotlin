@@ -12,6 +12,7 @@ import com.intellij.openapi.roots.libraries.ui.LibraryEditorComponent
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.util.PathUtil
 import org.jetbrains.kotlin.idea.KotlinIcons
+import org.jetbrains.kotlin.idea.modules.NativeLibraryKind
 import org.jetbrains.kotlin.konan.library.lite.LiteKonanLibraryFacade
 import java.io.File
 import javax.swing.Icon

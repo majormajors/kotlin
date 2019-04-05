@@ -26,6 +26,7 @@ import org.jetbrains.kotlin.idea.caches.project.LibraryInfo
 import org.jetbrains.kotlin.idea.caches.project.getModuleInfosFromIdeaModel
 import org.jetbrains.kotlin.idea.caches.resolve.PlatformAnalysisSettings
 import org.jetbrains.kotlin.idea.compiler.IDELanguageSettingsProvider
+import org.jetbrains.kotlin.idea.modules.NativeLibraryKind
 import org.jetbrains.kotlin.konan.file.File
 import org.jetbrains.kotlin.konan.library.*
 import org.jetbrains.kotlin.konan.util.KonanFactories

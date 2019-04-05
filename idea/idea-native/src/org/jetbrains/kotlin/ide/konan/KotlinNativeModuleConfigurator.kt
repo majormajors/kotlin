@@ -11,6 +11,7 @@ import com.intellij.psi.search.GlobalSearchScope
 import org.jetbrains.kotlin.ide.konan.index.KotlinNativeMetaFileIndex
 import org.jetbrains.kotlin.idea.configuration.LibraryKindSearchScope
 import org.jetbrains.kotlin.idea.configuration.hasKotlinFilesOnlyInTests
+import org.jetbrains.kotlin.idea.modules.NativeLibraryKind
 import org.jetbrains.kotlin.idea.util.application.runReadAction
 import org.jetbrains.kotlin.idea.util.runWithAlternativeResolveEnabled
 import org.jetbrains.kotlin.idea.vfilefinder.hasSomethingInPackage
