@@ -341,21 +341,49 @@ class CodeFragmentParameterAnalyzer(
         }
     }
 
-    private fun doesCrossInlineBounds(expression: PsiElement, declaration: PsiElement): Boolean {
-        val declarationParent = declaration.parent ?: return false
-        var currentParent: PsiElement? = expression.parent?.takeIf { it.isInside(declarationParent) } ?: return false
+    private tailrec fun doesCrossInlineBounds(expression: PsiElement, declaration: PsiElement): Boolean {
+        val expressionFile = expression.containingFile ?: return false
+        val declarationFile = declaration.containingFile ?: return false
 
-        while (currentParent != null && currentParent != declarationParent) {
-            if (currentParent is KtFunction) {
-                val functionDescriptor = bindingContext[BindingContext.FUNCTION, currentParent]
-                if (functionDescriptor != null && !functionDescriptor.isInline) {
-                    return true
-                }
+        if (expressionFile == declarationFile) {
+            return doesCrossInlineBoundsSingleFile(expression, declaration)
+        }
+
+        for (parent in expression.parents) {
+            if (isNonInlineFunction(parent)) {
+                return true
             }
+        }
+
+        if (expressionFile is KtCodeFragment) {
+            val containingElement = expressionFile.context ?: return false
+            return doesCrossInlineBounds(containingElement, declaration)
+        }
+
+        return false
+    }
+
+    private fun doesCrossInlineBoundsSingleFile(expression: PsiElement, declaration: PsiElement): Boolean {
+        val commonParent = PsiTreeUtil.findCommonParent(expression, declaration) ?: return false
+        var currentParent: PsiElement? = expression.parent
+
+        while (currentParent != null && currentParent != commonParent) {
+            if (isNonInlineFunction(currentParent)) return true
 
             currentParent = when (currentParent) {
                 is KtCodeFragment -> currentParent.context
                 else -> currentParent.parent
+            }
+        }
+
+        return false
+    }
+
+    private fun isNonInlineFunction(currentParent: PsiElement?): Boolean {
+        if (currentParent is KtFunction) {
+            val functionDescriptor = bindingContext[BindingContext.FUNCTION, currentParent]
+            if (functionDescriptor != null && !functionDescriptor.isInline) {
+                return true
             }
         }
 
@@ -372,15 +400,6 @@ class CodeFragmentParameterAnalyzer(
         }
 
         return descriptor.source.getPsi()?.containingFile is KtCodeFragment
-    }
-
-    private tailrec fun PsiElement.isInside(parent: PsiElement): Boolean {
-        if (parent.isAncestor(this)) {
-            return true
-        }
-
-        val context = (this.containingFile as? KtCodeFragment)?.context ?: return false
-        return context.isInside(parent)
     }
 }
 

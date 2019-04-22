@@ -446,6 +446,11 @@ public class KotlinEvaluateExpressionTestGenerated extends AbstractKotlinEvaluat
             runTest("idea/testData/debugger/tinyApp/src/evaluate/singleBreakpoint/variableAsFunction.kt");
         }
 
+        @TestMetadata("variableAsFunctionNotCaptured.kt")
+        public void testVariableAsFunctionNotCaptured() throws Exception {
+            runTest("idea/testData/debugger/tinyApp/src/evaluate/singleBreakpoint/variableAsFunctionNotCaptured.kt");
+        }
+
         @TestMetadata("vars.kt")
         public void testVars() throws Exception {
             runTest("idea/testData/debugger/tinyApp/src/evaluate/singleBreakpoint/vars.kt");
